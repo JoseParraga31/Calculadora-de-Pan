@@ -35,3 +35,5 @@ mostrar("La hidratacion total es de "+ hidratacionFinal+"%")
 for(const propiedad in receta1){
     console.log(propiedad + "="+ receta1[propiedad]+"Gr");
 } 
+
+let recetas = [];
