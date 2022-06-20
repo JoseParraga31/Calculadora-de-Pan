@@ -75,7 +75,7 @@ for (let item of receta){
     pesoTotal += item.peso
 }
 
-console.log(pesoTotal);
+
 //forOf para recorrer el array y sumar las propiedades.peso
 for(let item of harinas){
     harinaTotal += item.peso
@@ -83,7 +83,7 @@ for(let item of harinas){
 for(let item of liquidos){
     LiquidosTotal +=item.peso
 };
-console.log(LiquidosTotal);
+
 Hidratacion(LiquidosTotal,100,harinaTotal)
 
 
