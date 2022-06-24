@@ -7,35 +7,32 @@ function capturar(){
             this.peso = peso;
         }   
     }
-    let categoriaCapturada = prompt("Indique el tipo de ingrediente: \n 1-Harina \n 2-Liquidos \n 3-Secos \n 4-Grasas \n 5-Fermento \n 6-Otros");
-    switch (categoriaCapturada) {
-        case "1":
-            alert("Selecionaste el tipo de ingrediente Harina")
-            break;
-        case "2":
-            alert("Selecionaste el tipo de ingrediente Liquido")
-            break;
-        case "3":
-            alert("Selecionaste el tipo de ingrediente Secos")
-            break;
-        case "4":
-            alert("Selecionaste el tipo de ingrediente  Grasas")
-            break;
-        case "5":
-            alert("Selecionaste el tipo de ingrediente  Fermento")
-            break;
-        case "6":
-            alert("Selecionaste el tipo de ingrediente  Otro")
-            break;
-        
-        default:
-            alert("Opcion no valida, tipo de intente nuevamente")
-            break;
-    }
+        categoriaCapturada = document.querySelector("#categorias")
+        categorias.onclick = ()=>{
+            
+            switch (categoriaCapturada) {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        /*prompt("Indique el tipo de ingrediente: \n 1-Harina \n 2-Liquidos \n 3-Secos \n 4-Grasas \n 5-Fermento \n 6-Otros");*/
     
-    let ingredientecapturado = prompt("Indique el nombre del ingrediente de la formula");
+    
+        ingredientecapturado = document.querySelector("nombreIngrediente")
+        
     //console.log(ingredientecapturado);
-    let pesocapturado = parseInt(prompt("Indique el Peso total de" + " " + ingredientecapturado + " " + "en gr"));
+        pesocapturado = parseInt(document.querySelector("pesoIngrediente"))
     //console.log(pesocapturado);
 
     nuevoIngrediente = new Ingrediente(ingredientecapturado,pesocapturado,categoriaCapturada);
@@ -57,13 +54,14 @@ function agregar(){
 };
 
 //interador para agregar mas ingredientes
-let volverApreguntar = 0;
+/*let volverApreguntar = 0;
 while(volverApreguntar != "N"){
     capturar()
     
     volverApreguntar = prompt("Si desea agregar otro ingrediente, escriba S \n Si desea salir ingrese N")
 
-}
+}*/
+
 //filtro para encontrar los objetos que tengan categoria 1, en este caso las harinas 
 let harinas = receta.filter ((elemento) => elemento.categoria === "1");
 let liquidos = receta.filter ((elemento) => elemento.categoria === "2");
@@ -93,3 +91,6 @@ for (let item of receta){
 }
 mostrar("El Peso total es de " + pesoTotal + "gr")
 mostrar("La hidratcion total es de: "+ hidratacionfinal+"%")
+
+
+console.log(categoriaCapturada);
