@@ -57,7 +57,7 @@ color: #212121;
     text-align: start;
     margin-left: 0;
 }
-.container-porcentaje{
+.container-piesas-peso{
     display: flex;
     justify-content:flex-end ;
 }
@@ -73,14 +73,14 @@ color: #212121;
 .peso-final{
     margin-left: 6em;
 }
-.Peso-pieza input[type ="pieza"],
+.container-piesas-peso input[type ="pieza"],
 .ingrediente input[type="pesoIngrediente"],
 .ingrediente input[type="Nombreingrediente"],
-.container-porcentaje input[type="porcentaje"]{
+.container-piesas-peso input[type="pesoXpiesa"]{
     width: 5em ;
     border:solid 1px #BDBDBD;
     background-color: #FFE0B2;
-    margin-left: 1em;
+    margin-left: 0.5em;
 }
 
 .btn1{

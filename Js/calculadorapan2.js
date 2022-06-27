@@ -29,6 +29,9 @@ const Receta = []
 let contenedor = document.getElementById('contenedor')
 let btnAgregar = document.getElementById('btn1')
 let count = 0
+
+let btnCalcular = document.getElementById('calcular')
+btnCalcular.style.display='none'
 btnAgregar.addEventListener('click',()=>{
     count++
     let div = document.createElement('div')
@@ -36,7 +39,7 @@ btnAgregar.addEventListener('click',()=>{
     div.innerHTML= `
                     <div class="Categoria">
                     <select name="categorias" id="categorias${count}">
-                        <option value="o">Categorias</option>
+                        <option value="0">Categorias</option>
                         <option value="1">Harina</option>
                         <option value="2">Liquido</option>
                         <option value="3">Seco</option>
@@ -48,50 +51,96 @@ btnAgregar.addEventListener('click',()=>{
                     <input type="Nombreingrediente" id="nombreIngrediente${count}" name="nombreIngrediente" placeholder="Ingredinte">
 
                     <input type="pesoIngrediente" id="pesoIngrediente${count}" name="pesoIngrediente" placeholder="  Gr" class="ingrediente">
-                    <p class="peso-final" id="PesoMultiplicado${count}">
-                    
-                    </p> 
+                    <p class="peso-final" id="PesoMultiplicado${count}"></p>
+                    <button id="cargar${count}">cargar</button>
                 </div>
                     `
     contenedor.appendChild(div)
 
     if(document.getElementById(`categorias${count}`)){
+        btnCalcular.style.display='block'
+        btnAgregar.style.display = 'none'
+    
+    let btnCarga = document.getElementById(`cargar${count}`)
+    btnCarga.addEventListener('click',()=>{
+        
         let selectCate = document.getElementById(`categorias${count}`)
-        selectCate.addEventListener('change',()=>{
-        categoriaCapturada = parseInt(selectCate.value); 
-        console.log("CATEGORIA"+ categoriaCapturada); 
-        })
+        categoriaCapturada = parseInt(selectCate.value);
+        
+
         let inputNom = document.getElementById(`nombreIngrediente${count}`)
-        inputNom.addEventListener('change',()=>{
         nombreCapturado = inputNom.value;
-        console.log("NOMBRE" + "" +nombreCapturado );  
-        })
+        
         let inputGR = document.getElementById(`pesoIngrediente${count}`)
-        inputGR.addEventListener('change',()=>{
-        pesoCapturado = parseInt(inputGR.value)  ; 
-        console.log("PESO"+ pesoCapturado); 
-        })
-    }
-    class Ingrediente {
-        constructor(ingrediente, peso, categoria){
-            this.categoria = categoria;
-            this.ingrediente = ingrediente;
-            this.peso = peso;
-        }} 
-    
-    const nuevoIngrediente = new Ingrediente(nombreCapturado,pesoCapturado,categoriaCapturada);
-    
-    let harinas = Receta.filter ((elemento) => elemento.categoria === "1");
-    
-    console.log(harinas);
+        pesoCapturado = parseInt(inputGR.value); 
 
-    function agregar(){
+        let inputPieza = document.getElementById(`pieza`)
+        piezaCapturado = parseInt(inputPieza.value);
+        console.log(piezaCapturado);
+
+        let inputPesoXpiesa = document.getElementById(`pesoXpiesa`)
+        pesoXpiesaCapturado = parseInt(inputPesoXpiesa.value);
+        console.log(pesoXpiesaCapturado);
+        
+
+        if(isNaN(pesoCapturado)|| selectCate.value == 0 || nombreCapturado == ""){
+            alert('no deben estar los campos vacios o no seleccionados')
+        }else{
+            class Ingrediente {
+                constructor(ingrediente, peso, categoria){
+                    this.categoria = categoria;
+                    this.ingrediente = ingrediente;
+                    this.peso = peso;
+                }} 
+            
+            const nuevoIngrediente = new Ingrediente(nombreCapturado,pesoCapturado,categoriaCapturada);
+            agregar(nuevoIngrediente)
+            btnCarga.style.display = 'none'
+            btnAgregar.style.display = 'block'
+        }
+        
+    }) 
+
+    function agregar(nuevoIngrediente){
         Receta.push(nuevoIngrediente)
-        };
-        agregar()
-
         console.log(Receta);
-
+        };
+    }
 }) 
 
+btnCalcular.addEventListener('click',()=>{
+    let harinas = Receta.filter ((elemento) => elemento.categoria === 1);
+    let liquidos = Receta.filter ((elemento) => elemento.categoria === 2);
 
+    function Piesasfinal(n1,n2){
+        piesasTotal=n1/n2
+    }
+    function Hidratacion(n1,n2,n3){
+        hidratacionfinal = n1 * n2 / n3;
+    };
+    for (let item of Receta){
+        pesoTotal += item.peso
+    }
+    for(let item of harinas){
+        harinaTotal += item.peso
+    };
+    for(let item of liquidos){
+        LiquidosTotal +=item.peso
+    };
+    Piesasfinal(pesoTotal,pesoXpiesaCapturado);
+    Hidratacion(LiquidosTotal,100,harinaTotal);
+    
+    hidratcionFinal.style.display='inline';
+    hidratcionFinal.innerHTML= hidratacionfinal + "%";
+    
+    MasaFinal.style.display='inline';
+    MasaFinal.innerHTML = pesoTotal+"gr";
+    
+    totalPiesas.style.display='inline';
+    totalPiesas.innerHTML =  piesasTotal+"Uni";
+
+    /*console.log("peso total es de "+ pesoTotal);
+    console.log("Harinas total es de "+ harinaTotal);
+    console.log("liquidos total es de "+ LiquidosTotal);
+    console.log("hidratacion final es de "+ hidratacionfinal+"%");*/
+})
