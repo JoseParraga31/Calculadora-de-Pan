@@ -17,7 +17,13 @@ body{
     overflow-x: hidden;
     text-align: center;
 }
-
+.Tituli-Principal input[type = text]{
+    width: 10em ;
+    border:solid 1px #BDBDBD;
+    background-color: #FF9800;
+    margin-left: 0.5em;
+    margin-top: 0.2em;
+}
 .titulo-Secundario{
     text-align: center;
     margin-top: 1em;
@@ -28,7 +34,7 @@ body{
 }
 .Container-recetas{
 width: 70%;
-border:solid 1px #BDBDBD;
+
 
 
 }
@@ -37,6 +43,8 @@ border:solid 1px #BDBDBD;
     display: flex;
     justify-content: space-between;
     text-align: center;
+    border:solid 1px #BDBDBD;
+    margin-top: 0.5em;
 
 }
 a{

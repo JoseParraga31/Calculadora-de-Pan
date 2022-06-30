@@ -1,21 +1,4 @@
 
-
-
-/*intentando capturar datos de los input y guardandolo en vriables para operar*/ 
-// let categoriaCapturada = document.querySelector("#categorias")
-// console.log(categoriaCapturada.LinnerHTM);
-
-// let piezasfinal = document.querySelector("#pieza")
-// console.log(piezasfinal.innerHTML);
-
-// let porcentajeMultipica = document.querySelector("#porcentaje")
-// console.log(porcentajeMultipica.innerHTML);
-
-// let ingredienteCapturado = document.querySelector("#nombreIngrediente")
-// console.log(ingredienteCapturado.innerHTML);
-
-// let Peso = document.querySelector("#pesoIngrediente")
-// console.log(peso.innerHTML);
 let categoriaCapturada = 0,
 nombreCapturado = 0,
 pesoCapturado = 0,
@@ -27,7 +10,7 @@ let LiquidosTotal = 0;
 let pesoTotal = 0;
 const Receta = []
 let contenedor = document.getElementById('contenedor')
-let btnAgregar = document.getElementById('btn1')
+let btnAgregar = document.getElementById('btn2')
 let count = 0
 
 let btnCalcular = document.getElementById('calcular')
@@ -56,6 +39,9 @@ btnAgregar.addEventListener('click',()=>{
                 </div>
                     `
     contenedor.appendChild(div)
+    
+    let inputTituloPrinciapal = document.getElementById(`titulo`)
+    TituloPrinciapalCapturado = inputTituloPrinciapal.value;
 
     if(document.getElementById(`categorias${count}`)){
         btnCalcular.style.display='block'
@@ -76,13 +62,11 @@ btnAgregar.addEventListener('click',()=>{
 
         let inputPieza = document.getElementById(`pieza`)
         piezaCapturado = parseInt(inputPieza.value);
-        console.log(piezaCapturado);
+        
 
         let inputPesoXpiesa = document.getElementById(`pesoXpiesa`)
         pesoXpiesaCapturado = parseInt(inputPesoXpiesa.value);
-        console.log(pesoXpiesaCapturado);
         
-
         if(isNaN(pesoCapturado)|| selectCate.value == 0 || nombreCapturado == ""){
             alert('no deben estar los campos vacios o no seleccionados')
         }else{
@@ -139,8 +123,9 @@ btnCalcular.addEventListener('click',()=>{
     totalPiesas.style.display='inline';
     totalPiesas.innerHTML =  piesasTotal+"Uni";
 
-    /*console.log("peso total es de "+ pesoTotal);
-    console.log("Harinas total es de "+ harinaTotal);
-    console.log("liquidos total es de "+ LiquidosTotal);
-    console.log("hidratacion final es de "+ hidratacionfinal+"%");*/
+    let RecetaJson =  JSON.stringify(Receta)
+    localStorage.setItem(TituloPrinciapalCapturado, RecetaJson)
+    let TituloPrinciapalCapturadoJson = JSON.stringify(TituloPrinciapalCapturado)
+    localStorage.setItem("titulo",TituloPrinciapalCapturadoJson)
 })
+
