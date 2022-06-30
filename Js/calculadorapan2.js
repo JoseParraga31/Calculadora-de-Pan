@@ -129,3 +129,12 @@ btnCalcular.addEventListener('click',()=>{
     localStorage.setItem("titulo",TituloPrinciapalCapturadoJson)
 })
 
+function recuperarReceta(datos) {
+    if(datos){
+        selectCate.value = datos.categoria;
+        inputNom.value = datos.ingrediente;
+        inputGR.value = datos.peso;
+        
+    }  
+}
+recuperarReceta(JSON.parse(localStorage.getItem("Pan de campo")))
