@@ -131,9 +131,9 @@ btnCalcular.addEventListener('click',()=>{
 
 function recuperarReceta(datos) {
     if(datos){
-        selectCate.value = datos.categoria;
-        inputNom.value = datos.ingrediente;
-        inputGR.value = datos.peso;
+        categoriaCapturada.value = datos.categoria;
+        nombreCapturado.value = datos.ingrediente;
+        pesoCapturado.value = datos.peso;
         
     }  
 }
