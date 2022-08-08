@@ -137,4 +137,5 @@ function recuperarReceta(datos) {
         
     }  
 }
-recuperarReceta(JSON.parse(localStorage.getItem("Pan de campo")))
+
+document.addEventListener("DOMContentLoaded", recuperarReceta(JSON.parse(localStorage.getItem("Pan de campo"))));
